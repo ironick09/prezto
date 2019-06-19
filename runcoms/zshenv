@@ -9,3 +9,30 @@
 if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
+
+# ENV VARIABLES
+# Add folders/locations to $PATH
+export PATH="$HOME/bin:$PATH";
+export PATH="$PATH:/usr/local/sbin";
+export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+export PATH="/usr/local/opt/binutils/bin:$PATH"
+export PATH="/usr/local/lib/ruby/gems/2.6.0/bin:$PATH"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+
+# Set Github API token for Homebrew
+#export HOMEBREW_GITHUB_API_TOKEN=296b9f4ae43a4e37832f48751797eb753f82a03a
+
+# Go path settings
+export GOPATH="~/.go"
+export GOBIN="~/.go/bin"
+
+# Ruby pkgconfig path
+export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
+
+# Gpg TTY
+GPG_TTY=$(tty)
+export GPG_TTY
+
+# Source other env variables
+source ~/.zsecrets
