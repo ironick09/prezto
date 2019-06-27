@@ -14,3 +14,25 @@ fi
 source ~/.zshenv
 source ~/.zprofile
 
+# The following lines were added by compinstall
+
+zstyle ':completion:*' completer _complete _ignored
+zstyle :compinstall filename '/Users/jniec/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+source /usr/local/Cellar/goto/1.2.3/etc/bash_completion.d/goto.sh
+
+function gcd {
+  REPO=$1
+  CLONEPATH=$2
+
+  if [ -z $CLONEPATH ]; then
+      CLONEPATH=${$(basename $1)/.git/}
+  fi
+
+  git clone $REPO $CLONEPATH
+  cd $CLONEPATH
+}
