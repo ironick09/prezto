@@ -17,13 +17,14 @@ source ~/.zprofile
 # The following lines were added by compinstall
 
 zstyle ':completion:*' completer _complete _ignored
-zstyle :compinstall filename '/Users/jniec/.zshrc'
+zstyle :compinstall filename "$HOME/.zshrc"
 
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
 source /usr/local/Cellar/goto/1.2.3/etc/bash_completion.d/goto.sh
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 function gcd {
   REPO=$1

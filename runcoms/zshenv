@@ -1,8 +1,7 @@
 #
 # Defines environment variables.
 #
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#   define all environment variables here
 #
 
 # Ensure that a non-login, non-interactive shell has a defined environment.
@@ -11,30 +10,34 @@ if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; t
 fi
 
 # Source other env variables
-source ~/.zsecrets
+if [[ -s "${ZDOTDIR:-$HOME}/.zsecrets" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zsecrets"
+fi
 
-#source /usr/local/Cellar/goto/1.2.3/etc/bash_completion.d/goto.sh
 
 # ENV VARIABLES
 # Add folders/locations to $PATH
 export PATH="$HOME/bin:$PATH";
 export PATH="$PATH:/usr/local/sbin";
-export PATH="$PATH:$HOME/.cargo/bin"
-export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-export PATH="/usr/local/opt/binutils/bin:$PATH"
-export PATH="/usr/local/lib/ruby/gems/2.6.0/bin:$PATH"
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-export PATH="/Users/jniec/.chefdk/gem/ruby/2.6.0/bin:$PATH"
+hash cargo && export PATH="$PATH:$HOME/.cargo/bin"
+hash code && export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+[ -d '/usr/local/opt/binutils/bin' ] && export PATH="/usr/local/opt/binutils/bin:$PATH"
+[ -d '/usr/local/lib/ruby/gems/2.6.0/bin' ] && export PATH="/usr/local/lib/ruby/gems/2.6.0/bin:$PATH"
+[ -d '/usr/local/opt/ruby/bin' ] && export PATH="/usr/local/opt/ruby/bin:$PATH"
+[ -d "$HOME/.chefdk/gem/ruby/2.6.0/bin" ] && export PATH="/Users/jniec/.chefdk/gem/ruby/2.6.0/bin:$PATH"
 
 # Set Github API token for Homebrew
-#export HOMEBREW_GITHUB_API_TOKEN=296b9f4ae43a4e37832f48751797eb753f82a03a
+# set in ~/.zsecrets
 
 # Go path settings
-export GOPATH="~/.go"
-export GOBIN="~/.go/bin"
+hash go && export GOPATH="~/.go"
+hash go && export GOBIN="~/.go/bin"
 
 # Ruby pkgconfig path
-export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
+[ -d '/usr/local/opt/ruby/lib/pkgconfig' ] && export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
+
+# Java Classpath
+[ -d '/Library/Java/Extensions' ] && export CLASSPATH="$CLASSPATH:/Library/Java/Extensions/TwsApi.jar"
 
 # Gpg TTY
 GPG_TTY=$(tty)
