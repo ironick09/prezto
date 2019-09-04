@@ -10,9 +10,12 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Source .zshenv
+
+
+# Source
 source ~/.zshenv
 source ~/.zprofile
+source <(kubectl completion zsh)
 
 # The following lines were added by compinstall
 
@@ -23,8 +26,8 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-source /usr/local/Cellar/goto/1.2.3/etc/bash_completion.d/goto.sh
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+#source /usr/local/Cellar/goto/1.2.3/etc/bash_completion.d/goto.sh
+#source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 function gcd {
   REPO=$1
@@ -37,3 +40,14 @@ function gcd {
   git clone $REPO $CLONEPATH
   cd $CLONEPATH
 }
+
+## Aliases
+alias cat='bat --style=plain'
+
+alias sudo=$'nocorrect sudo\t'
+alias man=$'nocorrect man\t'
+alias k='kubectl'
+alias i='istioctl'
+alias tf='terraform'
+
+ssh() { /usr/bin/ssh $* | ct; }

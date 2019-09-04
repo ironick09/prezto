@@ -17,27 +17,11 @@ fi
 
 # ENV VARIABLES
 # Add folders/locations to $PATH
-export PATH="$HOME/bin:$PATH";
-export PATH="$PATH:/usr/local/sbin";
-hash cargo && export PATH="$PATH:$HOME/.cargo/bin"
-hash code && export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-[ -d '/usr/local/opt/binutils/bin' ] && export PATH="/usr/local/opt/binutils/bin:$PATH"
-[ -d '/usr/local/lib/ruby/gems/2.6.0/bin' ] && export PATH="/usr/local/lib/ruby/gems/2.6.0/bin:$PATH"
-[ -d '/usr/local/opt/ruby/bin' ] && export PATH="/usr/local/opt/ruby/bin:$PATH"
-[ -d "$HOME/.chefdk/gem/ruby/2.6.0/bin" ] && export PATH="/Users/jniec/.chefdk/gem/ruby/2.6.0/bin:$PATH"
-
-# Set Github API token for Homebrew
-# set in ~/.zsecrets
-
-# Go path settings
-hash go && export GOPATH="~/.go"
-hash go && export GOBIN="~/.go/bin"
-
-# Ruby pkgconfig path
-[ -d '/usr/local/opt/ruby/lib/pkgconfig' ] && export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
-
-# Java Classpath
-[ -d '/Library/Java/Extensions' ] && export CLASSPATH="$CLASSPATH:/Library/Java/Extensions/TwsApi.jar"
+case `uname` in
+    Darwin)
+        source ~/.zdarwin
+    ;;
+esac
 
 # Gpg TTY
 GPG_TTY=$(tty)
