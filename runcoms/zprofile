@@ -10,14 +10,8 @@
 #
 
 if [[ "$OSTYPE" == darwin* ]]; then
-  export BROWSER='chrome'
+  export BROWSER='open'
 fi
-
-#
-# Ruby
-#
-
-[ -d '/usr/local/opt/ruby/bin' ] &&
 
 #
 # Editors
