@@ -16,7 +16,7 @@ fi
 
 ## Source Zsh/Bash Completion
 source /usr/local/etc/profile.d/z.sh
-#source <(kubectl completion zsh)
+source <(kubectl completion zsh)
 source ~/.fzf.zsh
 
 ## Aliases
