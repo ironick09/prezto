@@ -4,6 +4,9 @@
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
+#zmodload zsh/zprof
+# Set git = hub
+eval "$(hub alias -s)"
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
@@ -26,8 +29,9 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-#source /usr/local/Cellar/goto/1.2.3/etc/bash_completion.d/goto.sh
-#source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/local/Cellar/goto/1.2.3/etc/bash_completion.d/goto.sh
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 function gcd {
   REPO=$1
@@ -43,11 +47,21 @@ function gcd {
 
 ## Aliases
 alias cat='bat --style=plain'
+alias ls='exa'
 
 alias sudo=$'nocorrect sudo\t'
 alias man=$'nocorrect man\t'
 alias k='kubectl'
 alias i='istioctl'
 alias tf='terraform'
+alias ipcalc='ipcalc -n'
 
 ssh() { /usr/bin/ssh $* | ct; }
+
+autoload -U +X bashcompinit && bashcompinit
+#complete -o nospace -C /usr/local/bin/vault vault
+
+export PATH="$HOME/.jenv/bin:$PATH"
+#eval "$(jenv init -)"
+
+#zprof
