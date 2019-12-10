@@ -1,11 +1,12 @@
 #
 # Executes commands at the start of an interactive session.
 #
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#   This file is sourced by interactive shells. It should define aliases, functions, shell options, and key bindings.
 #
-#zmodload zsh/zprof
-# Set git = hub
+#Performance Profiling
+zmodload zsh/zprof
+
+# Hub = Github
 eval "$(hub alias -s)"
 
 # Source Prezto.
@@ -13,55 +14,29 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-
-
-# Source
-source ~/.zshenv
-source ~/.zprofile
-source <(kubectl completion zsh)
-
-# The following lines were added by compinstall
-
-zstyle ':completion:*' completer _complete _ignored
-zstyle :compinstall filename "$HOME/.zshrc"
-
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
-
-source /usr/local/Cellar/goto/1.2.3/etc/bash_completion.d/goto.sh
+## Source Zsh/Bash Completion
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-function gcd {
-  REPO=$1
-  CLONEPATH=$2
-
-  if [ -z $CLONEPATH ]; then
-      CLONEPATH=${$(basename $1)/.git/}
-  fi
-
-  git clone $REPO $CLONEPATH
-  cd $CLONEPATH
-}
+source /usr/local/etc/profile.d/z.sh
+source <(kubectl completion zsh)
+source ~/.fzf.zsh
 
 ## Aliases
 alias cat='bat --style=plain'
 alias ls='exa'
-
 alias sudo=$'nocorrect sudo\t'
 alias man=$'nocorrect man\t'
 alias k='kubectl'
 alias i='istioctl'
 alias tf='terraform'
 alias ipcalc='ipcalc -n'
+alias sc='pet exec --color'
 
+## SSH function with Chromaterm
 ssh() { /usr/bin/ssh $* | ct; }
 
-autoload -U +X bashcompinit && bashcompinit
-#complete -o nospace -C /usr/local/bin/vault vault
+complete -F __start_kubectl k
 
-export PATH="$HOME/.jenv/bin:$PATH"
-#eval "$(jenv init -)"
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor root)
 
+# Prints profiling
 #zprof

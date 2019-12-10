@@ -1,8 +1,7 @@
 #
 # Executes commands at logout.
 #
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#   This file is sourced by login shells during logout. It should be used for displaying messages and the deletion of files.
 #
 
 # Execute code only if STDERR is bound to a TTY.

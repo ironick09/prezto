@@ -1,8 +1,8 @@
 #
 # Executes commands at login pre-zshrc.
 #
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#   This file is similar to zlogin, but it is sourced before zshrc. It was added for KornShell fans. See the description of zlogin below for what it may contain.
+#     zprofile and zlogin are not meant to be used concurrently but can be done so.
 #
 
 #
@@ -44,6 +44,14 @@ typeset -gU cdpath fpath mailpath path
 # Set the list of directories that Zsh searches for programs.
 path=(
   /usr/local/{bin,sbin}
+  /usr/local/opt/binutils/bin
+  /usr/local/opt/util-linux/{bin,sbin}
+  /usr/local/opt/curl/bin
+  $HOME/.bin
+  /usr/local/opt/curl/bin
+  /usr/local/opt/ruby/bin
+  $HOME/.cargo/bin
+  $HOME/.jenv/bin:$PATH
   $path
 )
 

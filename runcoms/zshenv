@@ -1,7 +1,7 @@
 #
 # Defines environment variables.
 #
-#   define all environment variables here
+#   This file is sourced by all instances of Zsh, and thus, it should be kept as small as possible and should only define environment variables.
 #
 
 # Ensure that a non-login, non-interactive shell has a defined environment.
@@ -9,19 +9,39 @@ if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; t
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
-# Source other env variables
+# Secrets Environment Variables
 if [[ -s "${ZDOTDIR:-$HOME}/.zsecrets" ]]; then
   source "${ZDOTDIR:-$HOME}/.zsecrets"
 fi
 
 
-# ENV VARIABLES
-# Add folders/locations to $PATH
-case `uname` in
-    Darwin)
-        source ~/.zdarwin
-    ;;
-esac
+
+# Go Env Variables
+export GOPATH="$HOME/.go"
+export GOBIN="$HOME/.go/bin"
+
+# Ruby Env Variables
+export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
+
+# Java Env Variables
+export CLASSPATH="/Library/Java/Extensions/TwsApi.jar"
+
+# Fzf Env Variables
+export FZF_COMPLETION_OPTS='+c -x'
+export FZF_COMPLETION_TRIGGER='~~'
+
+# Use fd (https://github.com/sharkdp/fd) instead of the default find
+# command for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+  fd --hidden --follow --exclude ".git" . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type d --hidden --follow --exclude ".git" . "$1"
+}
 
 # Gpg TTY
 GPG_TTY=$(tty)
