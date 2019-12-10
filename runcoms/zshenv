@@ -14,8 +14,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zsecrets" ]]; then
   source "${ZDOTDIR:-$HOME}/.zsecrets"
 fi
 
-
-
 # Go Env Variables
 export GOPATH="$HOME/.go"
 export GOBIN="$HOME/.go/bin"
@@ -47,4 +45,4 @@ _fzf_compgen_dir() {
 GPG_TTY=$(tty)
 export GPG_TTY
 
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=245,faint"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8,faint"
