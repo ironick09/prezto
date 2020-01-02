@@ -18,6 +18,8 @@ fi
 source /usr/local/etc/profile.d/z.sh
 source <(kubectl completion zsh)
 source ~/.fzf.zsh
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 
 ## Aliases
 alias cat='bat --style=plain'
@@ -27,8 +29,9 @@ alias man=$'nocorrect man\t'
 alias k='kubectl'
 alias i='istioctl'
 alias tf='terraform'
-alias ipcalc='ipcalc -n'
-alias sc='pet exec --color'
+alias ipcalc='sipcalc -a'
+alias code='code .'
+alias grep='rg'
 
 ## SSH function with Chromaterm
 ssh() { /usr/bin/ssh $* | ct; }
