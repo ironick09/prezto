@@ -28,6 +28,14 @@ export CLASSPATH="/Library/Java/Extensions/TwsApi.jar"
 export FZF_COMPLETION_OPTS='+c -x'
 export FZF_COMPLETION_TRIGGER='~~'
 
+# Knife/Chef
+export CHEF_USER=$USER
+export CHEF_SSH_USER=$USER
+export COOKBOOK_DIR="$HOME/source/cookbooks/chef-dough/cookbooks"
+
+# Ansible
+ANSIBLE_ROLES_PATH="$HOME/source/ansible"
+
 # Use fd (https://github.com/sharkdp/fd) instead of the default find
 # command for listing path candidates.
 # - The first argument to the function ($1) is the base path to start traversal
