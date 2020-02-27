@@ -41,6 +41,8 @@ typeset -gU cdpath fpath mailpath path
 #   $cdpath
 # )
 
+eval "$(rbenv init -)"
+
 # Set the list of directories that Zsh searches for programs.
 path=(
   /usr/local/{bin,sbin}
@@ -52,7 +54,8 @@ path=(
   /usr/local/opt/ruby/bin
   $HOME/.cargo/bin
   $HOME/.go/bin
-  $HOME/.jenv/bin:$PATH
+  $HOME/.jenv/bin
+  /usr/local/lib/ruby/gems/2.6.0/bin
   $path
 )
 

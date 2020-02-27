@@ -4,7 +4,11 @@
 #   This file is sourced by interactive shells. It should define aliases, functions, shell options, and key bindings.
 #
 #Performance Profiling
-zmodload zsh/zprof
+#zmodload zsh/zprof
+
+# Backwards Kill Character Alphanumeric Only
+autoload -U select-word-style
+select-word-style bash
 
 # Hub = Github
 eval "$(hub alias -s)"

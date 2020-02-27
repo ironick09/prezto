@@ -34,7 +34,10 @@ export CHEF_SSH_USER=$USER
 export COOKBOOK_DIR="$HOME/source/cookbooks/chef-dough/cookbooks"
 
 # Ansible
-ANSIBLE_ROLES_PATH="$HOME/source/ansible"
+export ANSIBLE_CONFIG="$HOME/source/repos/tw-ansible-networking/ansible.cfg"
+
+# NTC Templates
+export NET_TEXTFSM="$HOME/source/repos/ntc-templates/templates"
 
 # Use fd (https://github.com/sharkdp/fd) instead of the default find
 # command for listing path candidates.
@@ -54,3 +57,4 @@ GPG_TTY=$(tty)
 export GPG_TTY
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8,faint"
+
