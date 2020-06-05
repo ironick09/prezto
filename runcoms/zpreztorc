@@ -40,12 +40,8 @@ zstyle ':prezto:load' pmodule \
   'history-substring-search' \
   'autosuggestions' \
   'prompt' \
-  'docker' \
-  'homebrew' \
-  'osx' \
   'python' \
-  'rsync' \
-  'utility'
+  'command-not-found'
 
 
 # Python Pyenv Autoswitch

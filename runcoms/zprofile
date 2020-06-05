@@ -10,7 +10,7 @@
 #
 
 if [[ "$OSTYPE" == darwin* ]]; then
-  export BROWSER='open'
+  export BROWSER='edge'
 fi
 
 #
@@ -18,7 +18,7 @@ fi
 #
 
 export EDITOR='vim'
-export VISUAL='code'
+export VISUAL='macvim'
 export PAGER='less'
 
 #
@@ -36,27 +36,22 @@ fi
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
 
-# Set the list of directories that cd searches.
-# cdpath=(
-#   $cdpath
-# )
-
-eval "$(rbenv init -)"
-
 # Set the list of directories that Zsh searches for programs.
 path=(
+  /usr/local/opt/python/libexec/bin
+  /usr/local/opt/rabbitmq/sbin
   /usr/local/{bin,sbin}
   /usr/local/opt/binutils/bin
   /usr/local/opt/util-linux/{bin,sbin}
   /usr/local/opt/curl/bin
-  $HOME/.bin
-  /usr/local/opt/curl/bin
   /usr/local/opt/ruby/bin
-  $HOME/.cargo/bin
-  $HOME/.go/bin
-  $HOME/.jenv/bin
+  /usr/local/lib/ruby/gems/2.7.0/bin
   /usr/local/lib/ruby/gems/2.6.0/bin
-  $path
+  /opt/X11/bin
+  $HOME/.bin
+  $HOME/.cargo/bin
+  /usr/{bin,sbin}
+  /{bin,sbin}
 )
 
 #
